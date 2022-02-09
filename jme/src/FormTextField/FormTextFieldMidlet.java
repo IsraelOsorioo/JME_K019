@@ -38,8 +38,9 @@ public class FormTextFieldMidlet extends MIDlet implements CommandListener, Item
         tfNum2 = new TextField(("Numero 2:"), "", 10, TextField.DECIMAL);
         tfOperador = new TextField(("Operacion:"), "", 1, TextField.ANY);
         tfResultado = new TextField(("Resultado:"), "", 10, TextField.DECIMAL);
-        msg = new StringItem("", "Escriba los numeros, asigne " + 
-                "operacion A para sumar o M para multiplicar," + "y presionamos Go");
+        msg = new StringItem("", "Escriba los numeros, asigne" + 
+                " operacion S para sumar, M para multiplicar, R para restar o D para dividir" + 
+                " y presionamos Go");
         mainForm.append(tfNum1);
         mainForm.append(tfNum2);
         mainForm.append(tfOperador);
@@ -67,11 +68,17 @@ public class FormTextFieldMidlet extends MIDlet implements CommandListener, Item
     public void commandAction(Command c, Displayable d) {
         if(c == cmdGo)
         {
-            if(oper.equalsIgnoreCase("A")) {
+            if(oper.equalsIgnoreCase("s")) {
                 result = num1 + num2;
             }
             if(oper.equalsIgnoreCase("M")) {
                 result = num1 * num2;
+            }
+            if(oper.equalsIgnoreCase("R")) {
+                result = num1 - num2;
+            }
+            if(oper.equalsIgnoreCase("D")) {
+                result = num1 / num2;
             }
             
             tfResultado.setString(result + "");
